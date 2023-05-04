@@ -1,0 +1,4 @@
+settings:
+  sqs:
+    queue-name: sample-queue
+    endpoint-url: http://localhost:4566
