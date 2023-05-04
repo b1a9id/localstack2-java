@@ -22,6 +22,8 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sqs.SqsClient;
 import software.amazon.awssdk.services.sqs.model.Message;
 
+import static com.b1a9idps.localstack2java.SqsQueueMessageSender.DEFAULT_MESSAGE;
+
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("unittest")
 @ContextConfiguration(classes = {TestConfig.class}, initializers = ConfigDataApplicationContextInitializer.class)
@@ -66,7 +68,7 @@ class SqsQueueMessageSenderTest extends AbstractContainerBaseTest {
         Assertions.assertThat(actual.messages())
                 .hasSize(1)
                 .extracting(Message::body)
-                .containsExactly("test-message");
+                .containsExactly(DEFAULT_MESSAGE);
     }
 
 }

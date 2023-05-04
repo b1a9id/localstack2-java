@@ -11,6 +11,8 @@ import software.amazon.awssdk.services.sqs.SqsClient;
 @Component
 public class SqsQueueMessageSender implements ApplicationRunner {
 
+    static final String DEFAULT_MESSAGE = "test-message";
+
     private final SqsClient sqsClient;
     private final SqsProperties sqsProperties;
 
@@ -23,6 +25,6 @@ public class SqsQueueMessageSender implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         var queueUrl = sqsClient.getQueueUrl(builder -> builder.queueName(sqsProperties.queueName()))
                 .queueUrl();
-        sqsClient.sendMessage(builder -> builder.queueUrl(queueUrl).messageBody("test-message"));
+        sqsClient.sendMessage(builder -> builder.queueUrl(queueUrl).messageBody(DEFAULT_MESSAGE));
     }
 }
