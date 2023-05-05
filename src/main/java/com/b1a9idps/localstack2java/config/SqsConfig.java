@@ -17,6 +17,7 @@ public class SqsConfig {
                 .region(Region.AP_NORTHEAST_1)
                 .endpointOverride(properties.endpointUrl());
         if (properties.endpointUrl() != null) {
+            // LocalStackのエンドポイントに書き換える
             builder.endpointOverride(properties.endpointUrl());
         }
         return builder.build();
