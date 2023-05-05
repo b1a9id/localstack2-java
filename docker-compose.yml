@@ -6,5 +6,7 @@ services:
     ports:
       - "127.0.0.1:4566:4566"
     environment:
+      # LocalStackのログを出力するかどうかを指定
       - DEBUG=1
+      # Docker Composeで起動されるコンテナがDockerデーモンと通信するために使用するDockerホストのアドレスを指定
       - DOCKER_HOST=unix:///var/run/docker.sock
